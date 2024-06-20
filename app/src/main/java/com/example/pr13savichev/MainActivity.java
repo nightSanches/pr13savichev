@@ -1,4 +1,5 @@
 package com.example.pr13savichev;
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         result = findViewById(R.id.result);
         _LocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -46,5 +48,21 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    public Boolean GetPermissionGPS(){
+        ACCESS_FINE_LOCATION = ActivityCompat.checkSelfPermission(
+                this, android.Manifest.permission.ACCESS_FINE_LOCATION);
+        ACCESS_COARSE_LOCATION = ActivityCompat.checkSelfPermission(
+                this, android.Manifest.permission.ACCESS_COARSE_LOCATION);
+        return  ACCESS_FINE_LOCATION == PackageManager.PERMISSION_GRANTED ||
+                ACCESS_COARSE_LOCATION == PackageManager.PERMISSION_GRANTED;
+    }
+
+    public void OnGetGPS(View view){
+        if(!GetPermissionGPS()){
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        }
+    }
 
 }
