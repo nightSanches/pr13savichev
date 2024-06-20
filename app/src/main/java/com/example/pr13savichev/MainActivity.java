@@ -20,6 +20,14 @@ public class MainActivity extends AppCompatActivity {
     private int ACCESS_COARSE_LOCATION;
     private TextView result;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        result = findViewById(R.id.result);
+        _LocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+    }
+
     LocationListener _LocationListener = new LocationListener() {
         @Override
         public void onLocationChanged(@NonNull Location location) {
