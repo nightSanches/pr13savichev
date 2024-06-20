@@ -37,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
             else{
                 String message = "";
                 if(location.getProvider().equals(LocationManager.GPS_PROVIDER)){
-                    message += "\nМестоположение определено с помощью GPS: долгота - " +
-                            location.getLatitude() + " широта - " + location.getLatitude();
+                    message += "\nМестоположение определено с помощью GPS: долгота " +
+                            location.getLatitude() + " широта " + location.getLongitude();
                 }
                 if(location.getProvider().equals(LocationManager.NETWORK_PROVIDER)){
-                    message += "\nМестоположение определено с помощью интернета: долгота - " +
-                            location.getLatitude() + " широта - " + location.getLatitude();
+                    message += "\nМестоположение определено с помощью интернета: долгота " +
+                            location.getLatitude() + " широта " + location.getLongitude();
                 }
                 result.setText(message);
             }
